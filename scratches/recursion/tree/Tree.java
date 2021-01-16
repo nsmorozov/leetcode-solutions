@@ -1,5 +1,7 @@
 package recursion.tree;
 
+import recursion.datastructure.SimpleStack;
+
 public class Tree {
     private int value;
     private Tree left;
@@ -16,14 +18,31 @@ public class Tree {
         this.value = value;
     }
 
-    public int sum() {
-
+    public int recursiveSum() {
         if (left != null) {
-            s += left.sum();
+            s += left.recursiveSum();
         }
         if (right != null) {
-            s += right.sum();
+            s += right.recursiveSum();
         }
         return value + s;
+    }
+
+    public int iterativeSum() {
+        SimpleStack<Tree> stack = new SimpleStack<>();
+        int s = value;
+        stack.push(this);
+        while (!stack.isEmpty()) {
+            Tree node = stack.pop();
+            if (node.left != null) {
+                s += node.left.value;
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                s += node.right.value;
+                stack.push(node.right);
+            }
+        }
+        return s;
     }
 }
