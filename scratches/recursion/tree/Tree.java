@@ -8,10 +8,10 @@ public class Tree {
     private Tree right;
     private int s;
 
-    public Tree(int value, Tree left, Tree righ) {
+    public Tree(int value, Tree left, Tree right) {
         this.value = value;
         this.left = left;
-        this.right = righ;
+        this.right = right;
     }
 
     public Tree(int value) {
@@ -19,13 +19,14 @@ public class Tree {
     }
 
     public int recursiveSum() {
+        s = value;
         if (left != null) {
             s += left.recursiveSum();
         }
         if (right != null) {
             s += right.recursiveSum();
         }
-        return value + s;
+        return s;
     }
 
     public int iterativeSum() {
