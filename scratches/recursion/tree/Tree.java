@@ -3,10 +3,9 @@ package recursion.tree;
 import recursion.datastructure.SimpleStack;
 
 public class Tree {
-    private int value;
+    private final int value;
     private Tree left;
     private Tree right;
-    private int s;
 
     public Tree(int value, Tree left, Tree right) {
         this.value = value;
@@ -19,7 +18,7 @@ public class Tree {
     }
 
     public int recursiveSum() {
-        s = value;
+        int s = value;
         if (left != null) {
             s += left.recursiveSum();
         }
