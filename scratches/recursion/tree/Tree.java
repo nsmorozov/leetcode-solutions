@@ -45,4 +45,22 @@ public class Tree {
         }
         return s;
     }
+
+    private boolean find(Tree t, int searchValue) {
+        if (t == null) return false;
+        if(t.value == searchValue) return true;
+        boolean result = false;
+        if (t.right != null) {
+            result = find(t.right,searchValue);
+        }
+        if (!result  && t.left != null) {
+            result = find(t.left, searchValue);
+        }
+        return result;
+    }
+
+    public boolean find(int searchValue) {
+        return find(this, searchValue);
+    }
+
 }
